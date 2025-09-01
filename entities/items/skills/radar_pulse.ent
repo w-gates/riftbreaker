@@ -1,0 +1,210 @@
+EntityBlueprint
+{
+	name "items/consumables/radar_pulse"
+
+	FogOfWarRevealerComponentDesc
+	{
+		radius "150"
+	}
+
+	LifeTimeDesc
+	{
+		time 20
+	}
+
+	EffectDesc
+	{
+		EffectGroup
+		{
+			enabled "1"
+
+			Effects
+			{
+				Effect
+				{
+					blueprint "effects/items/radar_pulse"
+				}
+			}
+		}
+	}
+}
+
+EntityBlueprint
+{
+	name "items/consumables/radar_pulse_advanced"
+
+	base_blueprint "items/consumables/radar_pulse"
+
+	FogOfWarRevealerComponentDesc
+	{
+		radius "175"
+	}
+
+	LifeTimeDesc
+	{
+		time 25
+	}
+}
+
+EntityBlueprint
+{
+	name "items/consumables/radar_pulse_superior"
+
+	base_blueprint "items/consumables/radar_pulse"
+
+	FogOfWarRevealerComponentDesc
+	{
+		radius "200"
+	}
+
+	LifeTimeDesc
+	{
+		time 30
+	}
+}
+
+EntityBlueprint
+{
+	name "items/consumables/radar_pulse_extreme"
+
+	base_blueprint "items/consumables/radar_pulse"
+
+	FogOfWarRevealerComponentDesc
+	{
+		radius "225"
+	}
+
+	LifeTimeDesc
+	{
+		time 35
+	}
+}
+
+EntityBlueprint
+{
+	name "items/skills/radar_pulse_item"
+
+	InventoryItemDesc
+	{
+		type 		"skill"
+		name 		"gui/menu/inventory/skill_name/radar_pulse"
+		cooldown	"10"
+		icon		"gui/hud/items_icons/skills/radar_pulse"
+        bigger_icon "gui/menu/items_icons/skills/radar_pulse"
+		description 	"gui/menu/inventory/skill_description/radar_pulse"
+		//add_quality "0"
+		rarity			"STANDARD"
+		replace_lower_quality		"1"
+	}
+
+	LuaDesc
+	{
+		script "lua/items/skills/radar_pulse.lua"
+
+		database
+		{
+			radius	float:"150"
+		}
+	}
+
+	CostDesc
+	{
+		is_unique "1"
+	}
+}
+
+EntityBlueprint
+{
+	name "items/skills/radar_pulse_advanced_item"
+
+	InventoryItemDesc
+	{
+		type 		"skill"
+		name 		"gui/menu/inventory/skill_name/radar_pulse"
+		cooldown	"10"
+		icon		"gui/hud/items_icons/skills/radar_pulse"
+        bigger_icon "gui/menu/items_icons/skills/radar_pulse"
+		description 	"gui/menu/inventory/skill_description/radar_pulse"
+		rarity			"ADVANCED"
+		replace_lower_quality		"1"
+	}
+
+	LuaDesc
+	{
+		script "lua/items/skills/radar_pulse.lua"
+
+		database
+		{
+			radius	float:"175"
+		}
+	}
+
+	CostDesc
+	{
+		is_unique "1"
+	}
+}
+
+EntityBlueprint
+{
+	name "items/skills/radar_pulse_superior_item"
+
+	InventoryItemDesc
+	{
+		type 		"skill"
+		name 		"gui/menu/inventory/skill_name/radar_pulse"
+		cooldown	"10"
+		icon		"gui/hud/items_icons/skills/radar_pulse"
+        bigger_icon "gui/menu/items_icons/skills/radar_pulse"
+		description 	"gui/menu/inventory/skill_description/radar_pulse"
+		rarity			"SUPERIOR"
+		replace_lower_quality		"1"
+	}
+
+	LuaDesc
+	{
+		script "lua/items/skills/radar_pulse.lua"
+
+		database
+		{
+			radius	float:"200"
+		}
+	}
+
+	CostDesc
+	{
+		is_unique "1"
+	}
+}
+
+EntityBlueprint
+{
+	name "items/skills/radar_pulse_extreme_item"
+
+	InventoryItemDesc
+	{
+		type 		"skill"
+		name 		"gui/menu/inventory/skill_name/radar_pulse"
+		cooldown	"10"
+		icon		"gui/hud/items_icons/skills/radar_pulse"
+        bigger_icon "gui/menu/items_icons/skills/radar_pulse"
+		description 	"gui/menu/inventory/skill_description/radar_pulse"
+		rarity			"EXTREME"
+		replace_lower_quality		"1"
+	}
+
+	LuaDesc
+	{
+		script "lua/items/skills/radar_pulse.lua"
+
+		database
+		{
+			radius	float:"225"
+		}
+	}
+
+	CostDesc
+	{
+		is_unique "1"
+	}
+}
