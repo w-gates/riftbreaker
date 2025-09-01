@@ -56,4 +56,31 @@ function Multiply-WallCostAndStrength {
     }
 }
 
-Multiply-WallCostAndStrength
+# Multiply-WallCostAndStrength
+
+function Set-LootChanceToZero {
+    param (
+        [string]$FilePath = 'C:\Program Files (x86)\Steam\steamapps\common\Riftbreaker\mods\Walter2\scripts\blueprint_tables\loot_table.dat'
+    )
+
+    $lines = Get-Content $FilePath
+    $lootItems = @(
+        'LootItem "mods_standard"',
+        'LootItem "mods_advanced"',
+        'LootItem "mods_superior"'
+    )
+
+    for ($i = 0; $i -lt $lines.Count; $i++) {
+        if ($lines[$i] -match 'chance\s+"([0-9]*\.[0-9]+)"') {
+            # Check if line 2 before matches a lootItem
+            if ($i - 2 -ge 0 -and $lootItems -contains $lines[$i - 2].Trim()) {
+                $lines[$i] = $lines[$i] -replace 'chance\s+"[0-9]*\.[0-9]+"', 'chance "0.0000"'
+            }
+        }
+    }
+
+    Set-Content -Path "${FilePath}.tmp" -Value $lines
+}
+
+# Usage:
+Set-LootChanceToZero
