@@ -1,21 +1,22 @@
 EntityBlueprint
 {
-	name  "buildings/resources/ammunition_storage"
+	name  "buildings/resources/liquid_material_storage"
 
-		BuildingDesc
+	BuildingDesc
 	{
-		name 				"ammunition_storage"
-		bp   				"buildings/resources/ammunition_storage"
+		name 				"liquid_material_storage"
+		bp   				"buildings/resources/liquid_material_storage"
 		category 			"resources"
-		localization_id		"gui/hud/building_name/ammunition_storage"
-		description			"gui/hud/building_description/ammunition_storage"
-		menu_icon			"gui/hud/building_icons/ammunition_storage"
+		type				"pipe"
+		localization_id		"gui/hud/building_name/liquid_material_storage"
+		description			"gui/hud/building_description/liquid_material_storage"
+		menu_icon			"gui/hud/building_icons/liquid_material_storage"
 		require 			"headquarters"
-		upgrade				"buildings/resources/ammunition_storage_lvl_2"
-		order				"6"
-		limit			    "2"
-		limit_name			"ammo_storage"
+		upgrade				"buildings/resources/liquid_material_storage_lvl_2"
+		order				"7"
 		exclude_terrain_types "magma_hot_ground,magma_very_hot_ground"
+		menu_action			"resource_clear"
+		overrides			"pipe_ground,pipe_connector_t,pipe_connector_x,pipe_corner,pipeline,pipe_straight_windowless"
 
 		costs
 		{
@@ -25,7 +26,8 @@ EntityBlueprint
 				building_time 10
 				building_cost
 				{
-					carbonium 	"400"
+					carbonium 	"100"
+					steel 		"100"
 				}
 			}
 		}
@@ -37,16 +39,10 @@ EntityBlueprint
 		{
 			Storage
 			{
-				group		 "ammo_mech"
-				max 	 	 "4.0"
+				group	 		"local"
+				max 	 		"100000"
+				attachment		"att_in_1|att_in_2|att_in_3|att_in_4"
 			}
-
-			Storage
-			{
-				group		 "ammo_tower"
-				max 	 	 "16"
-			}
-
 			Storage
 			{
 				resource "energy"
@@ -55,16 +51,21 @@ EntityBlueprint
 		}
 	}
 
+	PipeComponent
+	{
+		attachment		"att_in_1,att_in_2,att_in_3,att_in_4"
+	}
+
 	LuaDesc
 	{
-		script "lua/buildings/building.lua"
+		script "lua/buildings/resources/pipe_straight.lua"
 
 		database
 		{
 			cone_effect			string:"build_cone_3x3"
 			cone_effect_sell	string:"sell_big"
+			postfix				string:"_storage"
 		}
-
 	}
 
 	HealthDesc
@@ -133,8 +134,17 @@ EntityBlueprint
 
 	MeshDesc
 	{
-		mesh "meshes/buildings/resources/ammunition_storage.mesh"
-		material "buildings/resources/ammunition_storage"
+		mesh 		"meshes/buildings/resources/liquid_material_storage_lvl_1.mesh"
+		material 	"buildings/resources/liquid_material_storage_lvl_1"
+
+		SubMeshes
+		{
+			SubMesh
+			{
+				id "1"
+				material "resources/resource_empty_fresnel"
+			}
+		}
 	}
 
 	TypeDesc
@@ -144,7 +154,7 @@ EntityBlueprint
 
 	SkeletonDesc
 	{
-		name "meshes/buildings/resources/ammunition_storage"
+		name "meshes/buildings/resources/liquid_material_storage_lvl_1"
 	}
 
 	PhysicsDesc
@@ -158,15 +168,24 @@ EntityBlueprint
 				physics_material 	"default"
 				Shapes
 				{
-					PhysicsSphereShape
+					PhysicsCapsuleShape
 					{
 						r "2.45"
+						half_height "1.5"
 
 						position
 						{
 							x "0.0"
-							y "1.0"
+							y "1"
 							z "0.0"
+						}
+
+						orientation
+						{
+							w "0.7"
+							x "0.0"
+							z "0.7"
+							y "0.0"
 						}
 					}
 				}
@@ -187,7 +206,7 @@ EntityBlueprint
 		{
 			PhysicsMeshShape
 			{
-				mesh "meshes/buildings/resources/solid_material_storage_g1.nxs"
+				mesh "meshes/buildings/resources/liquid_material_storage_g1.nxs"
 			}
 		}
 	}
@@ -197,9 +216,9 @@ EntityBlueprint
 		type	"quad"
 		color
 		{
-			x "0.098"
-			y "0.875"
-			z "0.263"
+			x "0.5"
+			y "0.5"
+			z "1"
 			w "1"
 		}
 		size
@@ -339,6 +358,67 @@ EntityBlueprint
 		EffectBaseBlueprints
 		{
 			"buildings/effects_medium_base"
+		}
+////////////////////////Resources/////////////////////////
+		EffectGroup
+		{
+			group "att_in_1"
+			enabled "0"
+			delay "0"
+
+			Effects
+			{
+				Effect
+				{
+					blueprint "effects/buildings_and_machines/building_arrow_twosided"
+					bone "att_in_1_arrow"
+				}
+			}
+		}
+		EffectGroup
+		{
+			group "att_in_2"
+			enabled "0"
+			delay "0"
+
+			Effects
+			{
+				Effect
+				{
+					blueprint "effects/buildings_and_machines/building_arrow_twosided"
+					bone "att_in_2_arrow"
+				}
+			}
+		}
+		EffectGroup
+		{
+			group "att_in_3"
+			enabled "0"
+			delay "0"
+
+			Effects
+			{
+				Effect
+				{
+					blueprint "effects/buildings_and_machines/building_arrow_twosided"
+					bone "att_in_3_arrow"
+				}
+			}
+		}
+		EffectGroup
+		{
+			group "att_in_4"
+			enabled "0"
+			delay "0"
+
+			Effects
+			{
+				Effect
+				{
+					blueprint "effects/buildings_and_machines/building_arrow_twosided"
+					bone "att_in_4_arrow"
+				}
+			}
 		}
 	}
 }

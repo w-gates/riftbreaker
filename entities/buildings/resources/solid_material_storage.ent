@@ -24,7 +24,7 @@ EntityBlueprint
 				building_time 10
 				building_cost
 				{
-					carbonium 	"1000"
+					carbonium 	"100"
 				}
 			}
 		}
@@ -38,7 +38,7 @@ EntityBlueprint
 			{
 				group	 		"global"
 				subgroup		"base"
-				max 	 		"10000"
+				max 	 		"1000000"
 			}
 			Storage
 			{

@@ -1,0 +1,1683 @@
+EntityBlueprint
+{
+	name effects/items/freeze_ray_beam
+
+	base_blueprints
+	{
+		 lights/point/fire_laser_blue
+		 effects/no_lifetime
+	}
+
+	ParticleDesc
+	{
+		name    "rift/freeze_ray_skill"
+	}
+	
+	ShockWaveDesc
+	{
+		power 	"10000"
+		speed 	"30"
+		radius 	"50"
+	}	
+
+	CameraShakeDesc
+	{
+		duration 		"0.1"
+		power   		"1"
+		falloff_radius 	"20"
+		radius   		"40"
+		frequency 		"20"
+		group			"explosion_big"
+	}
+
+	SoundDesc
+	{
+		name "items/weapons/energy/orbital_laser_hit"
+	}		
+}
+
+EntityBlueprint
+{
+	name effects/items/orbital_laser
+
+	base_blueprints
+	{
+		 lights/point/fire_laser_blue
+		 effects/no_lifetime
+	}
+
+	ParticleDesc
+	{
+		name    "rift/orbital_laser"
+	}
+	
+	ShockWaveDesc
+	{
+		power 	"10000"
+		speed 	"30"
+		radius 	"50"
+	}	
+
+	CameraShakeDesc
+	{
+		duration 		"0.1"
+		power   		"1"
+		falloff_radius 	"20"
+		radius   		"40"
+		frequency 		"20"
+		group			"explosion_big"
+	}
+
+	SoundDesc
+	{
+		name "items/weapons/energy/orbital_laser_hit"
+	}
+	
+	DecalDesc
+	{	
+		blueprint "effects/decals/explosion_hole_big_blue_01_timeout"
+		scale
+		{
+			x		2.0
+			y		2.0
+			z		2.0	
+		}
+	}		
+}
+
+EntityBlueprint
+{
+	name effects/items/orbital_bombardment
+
+	base_blueprints
+	{
+		 lights/point/explosion_orange_big
+		 effects/default
+	}
+
+	ParticleDesc
+	{
+		name    "rift/atomic_explosion_small"
+	}
+
+	CameraShakeDesc
+	{
+		duration 		"0.2"
+		power   		"0.3"
+		falloff_radius 	"20"
+		radius   		"40"
+		frequency 		"20"
+		group			"explosion_small"
+	}
+	
+	ShockWaveDesc
+	{
+		power 	"5000"
+		speed 	"30"
+		radius 	"30"
+	}	
+
+	SoundDesc
+	{
+		name "items/weapons/explosive/explosion_big"
+	}
+	
+	DecalDesc
+	{	
+		blueprint "effects/decals/explosion_hole_big_01_timeout"
+		scale
+		{
+			x		1.0
+			y		1.0
+			z		1.0
+		}
+	}		
+}
+
+EntityBlueprint
+{
+	base_blueprints
+	{
+		effects/weapons_elemental/muzzle
+		lights/point/muzzle_orange_small
+		effects/default
+	}
+
+	name effects/items/orbital_bombardment_muzzle
+
+	ParticleDesc
+	{
+		name    "rift/mech_single_muzzle"
+	}
+
+	CameraFeedbackShakeDesc
+	{
+		duration 		"0.066"
+		power   		"0.6"
+		group			"weapon_muzzle"
+	}
+
+	SoundDesc
+	{
+		name "items/weapons/explosive/orbital_bombardment_fire"
+	}			
+}
+
+EntityBlueprint
+{
+	name effects/items/emergency_explosion
+
+	base_blueprints
+	{
+		 lights/point/explosion_orange_big
+		 effects/default
+	}
+
+	ParticleDesc
+	{
+		name    "rift/emergency_explosion"
+	}
+	
+	ShockWaveDesc
+	{
+		power 	"5000"
+		speed 	"30"
+		radius 	"30"
+	}	
+
+	CameraShakeDesc
+	{
+		duration 		"0.5"
+		power   		"1"
+		falloff_radius 	"40"
+		radius   		"60"
+		frequency 		"20"
+		group			"explosion_big"
+	}
+
+	SoundDesc
+	{
+		name "items/skills/emergency_explosion"
+	}
+	
+	DecalDesc
+	{	
+		blueprint "effects/decals/explosion_hole_random"
+		scale
+		{
+			x		5.0
+			y		5.0
+			z		5.0
+		}
+	}	
+	
+	EffectDesc
+	{
+		EffectGroup
+		{
+			group "water_collision"
+			enabled "1"				
+			
+			Effects
+			{
+				Effect
+				{
+					blueprint "player/water_collision"
+					scale "10 10 10"
+				}
+			}
+		}			
+	}	
+}
+
+EntityBlueprint
+{
+	name effects/items/generator_overcharge
+
+	base_blueprints
+	{
+		 lights/point/explosion_blue_big
+		 effects/default
+	}
+
+	ParticleDesc
+	{
+		name    "rift/generator_overcharge"
+	}
+
+	CameraShakeDesc
+	{
+		duration 		"0.5"
+		power   		"1"
+		falloff_radius 	"40"
+		radius   		"60"
+		frequency 		"20"
+		group			"explosion_big"
+	}
+	
+	ShockWaveDesc
+	{
+		power 	"5000"
+		speed 	"30"
+		radius 	"30"
+	}		
+
+	SoundDesc
+	{
+		name "items/skills/generator_overcharge"
+	}
+	
+	DecalDesc
+	{	
+		blueprint "effects/decals/explosion_hole_big_blue_01_timeout"
+		scale
+		{
+			x		1.6
+			y		1.6
+			z		1.6
+		}
+	}	
+}
+
+EntityBlueprint
+{
+	name effects/items/power_jump_explosion
+
+	base_blueprints
+	{
+		 lights/point/explosion_orange_big
+		 effects/default
+	}
+
+	ParticleDesc
+	{
+		name    "rift/power_jump_explosion"
+	}
+
+	ShockWaveDesc
+	{
+		power 	"5000"
+		speed 	"50"
+		radius 	"30"
+	}
+
+	CameraShakeDesc
+	{
+		duration 		"0.5"
+		power   		"1"
+		falloff_radius 	"15"
+		radius   		"40"
+		frequency 		"30"
+		group			"explosion_big"
+	}	
+
+	SoundDesc
+	{
+		name "items/weapons/explosive/explosion_medium"
+	}
+	
+	DecalDesc
+	{	
+		blueprint "effects/decals/explosion_hole_random"
+		scale
+		{
+			x		4.0
+			y		4.0
+			z		4.0
+		}
+	}	
+}
+
+EntityBlueprint
+{
+	name effects/items/loot_generic_common
+
+	ParticleDesc
+	{
+		name    "rift/loot_generic_common"
+	}
+}
+
+EntityBlueprint
+{
+	name effects/items/loot_mods_common
+
+	ParticleDesc
+	{
+		name    "rift/loot_mods_common"
+	}
+}
+
+EntityBlueprint
+{
+	name effects/items/loot_resources_carbonium
+
+	ParticleDesc
+	{
+		name    "rift/loot_resources_carbonium"
+	}
+}
+
+EntityBlueprint
+{
+	name effects/items/mech_drill_activated
+
+	base_blueprints
+	{
+		effects/default
+	}
+
+	SoundDesc
+	{
+		name "items/mining/mech_dig_start"
+	}
+}
+
+EntityBlueprint
+{
+	name effects/items/mech_drill_equipped
+
+	base_blueprints
+	{
+		effects/default
+	}
+
+	SoundDesc
+	{
+		name "items/weapons/mech_drill_equipped"
+	}
+}
+
+EntityBlueprint
+{
+	name effects/items/mech_mine_placed
+
+	base_blueprints
+	{
+		 //lights/point/explosion_blue_medium	
+		 effects/default
+	}
+
+	SoundDesc
+	{
+		name items/consumables/mine
+	}
+}
+
+EntityBlueprint
+{
+	name effects/items/mech_mine_beacon_activated
+
+	base_blueprints
+	{
+		 lights/point/explosion_red_small
+		 effects/no_lifetime
+	}
+
+	ParticleDesc
+	{
+		name    "rift/mech_mine_beacon_armed"
+	}	
+}
+
+EntityBlueprint
+{
+	name effects/items/mech_mine_beacon_armed
+
+	base_blueprints
+	{
+		 lights/point/explosion_blue_small
+		 effects/no_lifetime
+	}
+	
+	ParticleDesc
+	{
+		name    "rift/mech_mine_beacon"
+	}	
+}
+
+EntityBlueprint
+{
+	name effects/items/mech_floating_mine_beacon_armed
+
+	base_blueprints
+	{
+		 lights/point/explosion_blue_small
+		 effects/no_lifetime
+	}
+	
+	MinimapItemDesc
+	{
+		type	"quad"
+		color 
+		{
+			x "1"
+			y "1"
+			z "0"
+			w "1"
+		}
+		size
+		{
+			x "2"
+			y "2"
+		}
+		visibility		"discovered"
+		layer_group		"player"
+	}
+
+	ParticleDesc
+	{
+		name    "rift/mech_floating_mine_beacon"
+	}	
+}
+
+EntityBlueprint
+{
+	name effects/items/mech_floating_mine_acid_beacon_armed
+
+	base_blueprints
+	{
+		 lights/point/explosion_green_small	
+		 effects/no_lifetime
+	}
+	
+	MinimapItemDesc
+	{
+		type	"quad"
+		color 
+		{
+			x "1"
+			y "1"
+			z "0"
+			w "1"
+		}
+		size
+		{
+			x "2"
+			y "2"
+		}
+		visibility		"discovered"
+		layer_group		"player"
+	}
+
+	ParticleDesc
+	{
+		name    "rift/mech_floating_mine_acid_beacon"
+	}	
+}
+
+EntityBlueprint
+{
+	name effects/items/mech_floating_mine_cryo_beacon_armed
+
+	base_blueprints
+	{
+		 lights/point/explosion_blue_small
+		 effects/no_lifetime
+	}
+	
+	MinimapItemDesc
+	{
+		type	"quad"
+		color 
+		{
+			x "1"
+			y "1"
+			z "0"
+			w "1"
+		}
+		size
+		{
+			x "2"
+			y "2"
+		}
+		visibility		"discovered"
+		layer_group		"player"
+	}
+
+	ParticleDesc
+	{
+		name    "rift/mech_floating_mine_cryo_beacon"
+	}	
+}
+
+EntityBlueprint
+{
+	name effects/items/mech_floating_mine_gravity_beacon_armed
+
+	base_blueprints
+	{
+		 lights/point/explosion_violet_small
+		 effects/no_lifetime
+	}
+	
+	MinimapItemDesc
+	{
+		type	"quad"
+		color 
+		{
+			x "1"
+			y "1"
+			z "0"
+			w "1"
+		}
+		size
+		{
+			x "2"
+			y "2"
+		}
+		visibility		"discovered"
+		layer_group		"player"
+	}
+
+	ParticleDesc
+	{
+		name    "rift/mech_floating_mine_gravity_beacon"
+	}	
+}
+
+EntityBlueprint
+{
+	name effects/items/mech_floating_mine_fire_beacon_armed
+
+	base_blueprints
+	{
+		 lights/point/explosion_orange_small
+		 effects/no_lifetime
+	}
+	
+	MinimapItemDesc
+	{
+		type	"quad"
+		color 
+		{
+			x "1"
+			y "1"
+			z "0"
+			w "1"
+		}
+		size
+		{
+			x "2"
+			y "2"
+		}
+		visibility		"discovered"
+		layer_group		"player"
+	}
+
+	ParticleDesc
+	{
+		name    "rift/mech_floating_mine_fire_beacon"
+	}	
+}
+
+EntityBlueprint
+{
+	name effects/items/mech_mine_beacon_nuclear_armed
+
+	base_blueprints
+	{
+		 lights/point/explosion_orange_small	
+		 effects/no_lifetime
+	}
+
+	MinimapItemDesc
+	{
+		type	"quad"
+		color 
+		{
+			x "1"
+			y "1"
+			z "0"
+			w "1"
+		}
+		size
+		{
+			x "2"
+			y "2"
+		}
+		visibility		"discovered"
+		layer_group		"player"
+	}
+
+	ParticleDesc
+	{
+		name    "rift/mech_mine_beacon_nuclear"
+	}	
+}
+
+EntityBlueprint
+{
+	name effects/items/mech_mine_beacon_cryo_armed
+
+	base_blueprints
+	{
+		 lights/point/explosion_mild_blue_small
+		 effects/no_lifetime
+	}
+
+	MinimapItemDesc
+	{
+		type	"quad"
+		color 
+		{
+			x "1"
+			y "1"
+			z "0"
+			w "1"
+		}
+		size
+		{
+			x "2"
+			y "2"
+		}
+		visibility		"discovered"
+		layer_group		"player"
+	}
+
+	ParticleDesc
+	{
+		name    "rift/mech_mine_beacon_cryo"
+	}	
+}
+
+EntityBlueprint
+{
+	name effects/items/mech_mine_beacon_gravity_armed
+
+	base_blueprints
+	{
+		 lights/point/explosion_violet_small
+		 effects/no_lifetime
+	}
+
+	MinimapItemDesc
+	{
+		type	"quad"
+		color 
+		{
+			x "1"
+			y "1"
+			z "0"
+			w "1"
+		}
+		size
+		{
+			x "2"
+			y "2"
+		}
+		visibility		"discovered"
+		layer_group		"player"
+	}
+
+	ParticleDesc
+	{
+		name    "rift/mech_mine_beacon_gravity"
+	}	
+}
+
+EntityBlueprint
+{
+	name "effects/items/mech_shield_activated"
+
+	base_blueprints
+	{
+		effects/default
+	}
+
+	SoundDesc
+	{
+		name "items/shield/mech_shield_activated"
+	}
+	
+	ParticleDesc
+	{
+		name    "rift/pickup_blue"
+	}	
+}
+
+EntityBlueprint
+{
+	name "effects/items/mech_shield_deactivated"
+
+	base_blueprints
+	{
+		effects/default
+	}
+
+	SoundDesc
+	{
+		name "items/shield/mech_shield_deactivated"
+	}
+}
+
+EntityBlueprint
+{
+	name "effects/items/mech_shield_equipped"
+
+	base_blueprints
+	{
+		effects/default
+	}
+
+	SoundDesc
+	{
+		name "items/shield/mech_shield_equipped"
+	}
+}
+
+EntityBlueprint
+{
+	name effects/items/mobile_lamp
+
+
+
+	//ParticleDesc
+	//{
+	//	name    "rift/light_white_lamp"
+	//}
+	
+		base_blueprints
+	{
+		 lights/point/white_big
+		 effects/no_lifetime
+	}
+
+	SoundDesc
+	{
+		name buildings/decorations/base_lamp/power_on
+	}
+}
+
+EntityBlueprint "effects/no_lifetime"
+{
+		name "effects/items/portal_idle2"
+
+	SoundDesc
+	{
+		name "items/portal/mech_portal_idle_2nd_layer"
+	}
+}
+
+EntityBlueprint
+{
+	name effects/items/potion
+
+	base_blueprints
+	{
+		 lights/point/muzzle_green_medium
+		 effects/default
+	}
+
+	ParticleDesc
+	{
+		name    "exor/healing_healer"
+	}
+
+	SoundDesc
+	{
+		name items/consumables/potion
+	}
+}
+
+EntityBlueprint
+{
+	name effects/items/radar_pulse
+
+	base_blueprints
+	{
+		 lights/point/muzzle_blue_big
+		 effects/default
+	}
+
+	ParticleDesc
+	{
+		name    "rift/radar_pulse"
+	}
+
+	SoundDesc
+	{
+		name items/skills/radar_pulse
+	}
+}
+
+EntityBlueprint "effects/default"
+{
+		name "effects/items/rift_placed"
+
+	SoundDesc
+	{
+		name "items/portal/rift_placed"
+	}
+}
+
+EntityBlueprint
+{
+	name effects/items/holo_decoy_explosion
+
+	base_blueprints
+	{
+		effects/weapons_elemental/hit
+		lights/point/explosion_blue_big
+		effects/default
+	}
+	
+	BombAmmoComponent
+	{		
+		DamagePattern
+		{
+			area_damage_radius	"3"
+			area_damage_speed 	"40"
+
+			Damages
+			{
+				Damage
+				{
+					value 			"200"
+					type			"energy"
+				}
+			}
+		}
+	}	
+
+	ShockWaveDesc
+	{
+		power 	"2000"
+		speed 	"40"
+		radius 	"20"
+	}
+
+	ParticleDesc
+	{
+		name    "rift/holo_decoy_explosion"
+	}
+
+	CameraShakeDesc
+	{
+		duration 		"0.4"
+		power   		"0.7"
+		falloff_radius 	"30"
+		radius   		"50"
+		frequency 		"20"
+		group			"explosion_big"
+	}
+
+	SoundDesc
+	{
+		name "items/weapons/energy/energy_explosion_medium"
+	}
+
+	DecalDesc
+	{	
+		blueprint "effects/decals/explosion_hole_random"
+		scale
+		{
+			x		2.0
+			y		2.0
+			z		2.0
+		}
+	}		
+}
+
+EntityBlueprint
+{
+	name effects/items/holo_decoy_explosion_advanced
+	base_blueprint "effects/items/holo_decoy_explosion"
+	
+	BombAmmoComponent
+	{		
+		DamagePattern
+		{
+			area_damage_radius	"3.2"
+			area_damage_speed 	"40"
+
+			Damages
+			{
+				Damage
+				{
+					value 			"250"
+					type			"energy"
+				}
+			}
+		}
+	}	
+}
+
+EntityBlueprint
+{
+	name effects/items/holo_decoy_explosion_superior
+	base_blueprint "effects/items/holo_decoy_explosion"
+	
+	BombAmmoComponent
+	{		
+		DamagePattern
+		{
+			area_damage_radius	"3.4"
+			area_damage_speed 	"40"
+
+			Damages
+			{
+				Damage
+				{
+					value 			"300"
+					type			"energy"
+				}
+			}
+		}
+	}	
+}
+
+EntityBlueprint
+{
+	name effects/items/holo_decoy_explosion_extreme
+	base_blueprint "effects/items/holo_decoy_explosion"
+	
+	BombAmmoComponent
+	{		
+		DamagePattern
+		{
+			area_damage_radius	"3.6"
+			area_damage_speed 	"40"
+
+			Damages
+			{
+				Damage
+				{
+					value 			"350"
+					type			"energy"
+				}
+			}
+		}
+	}	
+}
+
+EntityBlueprint
+{
+	name effects/items/holo_decoy_energy
+
+	ParticleDesc
+	{
+		name    "rift/holo_decoy_energy"
+	}
+	
+		base_blueprints
+	{
+		 //lights/point/white_big
+		 effects/no_lifetime
+	}
+
+	SoundDesc
+	{
+		name items/consumables/holo_decoy
+	}
+}
+
+EntityBlueprint
+{
+	name effects/items/flamewave
+
+	base_blueprints
+	{
+		 lights/point/fire_orange_medium
+		 effects/no_lifetime
+	}
+
+	ParticleDesc
+	{
+		name    "rift/flamewave"
+	}
+	
+	BurningComponent
+	{
+		spread_radius 			"2.0"			// radius to spread fire
+		spread_chance_override 	"1"			// allow to override chance to propagate fire if set to 1.0 everything flammable around will catch fire
+
+		spread_timer
+		{
+			limit "20" 						// how often entity will try to spread fire in microseconds ( 2s )
+		}
+
+		burning_effect_group    "time_damage_fire"			// effect group to be enabled on entity
+		burning_time			"1"	// how long it will burn in seconds
+		disable_light_fade_out "1"
+	}	
+}
+
+EntityBlueprint
+{
+	name effects/items/flamewave_sound
+
+	base_blueprints
+	{
+		 lights/point/muzzle_orange_big
+		 effects/default
+	}
+
+	SoundDesc
+	{
+		name items/skills/flamewave
+	}
+}
+
+EntityBlueprint
+{
+	name effects/items/flare_projectile
+
+	base_blueprints 
+	{
+		effects/weapons_elemental/projectile
+		lights/point/flare
+		effects/no_lifetime
+	}
+
+	MinimapItemDesc
+	{
+		type	"quad"
+		color 
+		{
+			x "1"
+			y "1"
+			z "0"
+			w "1"
+		}
+		size
+		{
+			x "2"
+			y "2"
+		}
+		visibility		"discovered"
+		layer_group		"player"
+	}
+
+	ParticleDesc
+	{
+		name    "rift/mech_flare_projectile"
+	}
+	
+	SoundDesc
+	{
+		name items/consumables/flare
+	}	
+}
+
+EntityBlueprint
+{
+	name "effects/items/antimatter_ball_beam_hit"
+	
+	base_blueprints
+	{
+		lights/point/fire_red_small
+		effects/no_lifetime
+	}
+
+	ParticleDesc
+	{
+		name    "rift/bradron_laser_hit"
+	}
+	
+	SoundDesc
+	{
+		name "enemies/bradron/laser_hit"
+	}
+}
+
+EntityBlueprint
+{
+	name "effects/items/antimatter_ball_explosion"
+	
+	base_blueprints
+	{
+		 lights/point/explosion_red_big
+		 effects/default
+	}
+
+	ShockWaveDesc
+	{
+		power 	"5000"
+		speed 	"30"
+		radius 	"30"
+	}
+
+	ParticleDesc
+	{
+		name    "rift/antimatter_ball_explosion"
+	}
+
+	CameraShakeDesc
+	{
+		duration 		"0.3"
+		power   		"1"
+		falloff_radius 	"25"
+		radius   		"40"
+		frequency 		"20"
+		group			"explosion_medium"
+	}
+
+	DecalDesc
+	{	
+		blueprint "effects/decals/explosion_hole_random"
+		scale
+		{
+			x		3
+			y		3
+			z		3
+		}
+	}
+	
+	SoundDesc
+	{
+		name "enemies/flurian/projectile_hit"
+	}
+}
+
+EntityBlueprint
+{
+	name "effects/items/antimatter_ball"
+	
+	base_blueprints
+	{
+		//lights/point/fire_red_small
+		effects/no_lifetime
+	}
+
+	//ParticleDesc
+	//{
+	//	name    "rift/bradron_laser_hit"
+	//}
+	
+	SoundDesc
+	{
+		name "items/skills/antimatter_ball_idle"
+	}
+}
+
+EntityBlueprint
+{
+	name "effects/items/antimatter_ball_muzzle"
+	
+	base_blueprints
+	{
+		//lights/point/fire_red_small
+		effects/default
+	}
+
+	//ParticleDesc
+	//{
+	//	name    "rift/bradron_laser_hit"
+	//}
+	
+	SoundDesc
+	{
+		name "items/skills/antimatter_ball_muzzle"
+	}
+}
+
+EntityBlueprint
+{
+	name "effects/items/tornado_muzzle"
+	
+	base_blueprints
+	{
+		//lights/point/fire_red_small
+		effects/default
+	}
+	
+	SoundDesc
+	{
+		name "items/skills/tornado_activated"
+	}
+}
+
+
+EntityBlueprint
+{
+	name effects/items/pickup_green
+
+	base_blueprints
+	{
+		 lights/point/muzzle_green_medium
+		 effects/default
+	}
+
+	ParticleDesc
+	{
+		name    "rift/pickup_green"
+	}
+}
+
+EntityBlueprint
+{
+	name effects/items/pickup_blue
+
+	base_blueprints
+	{
+		 lights/point/muzzle_blue_medium
+		 effects/default
+	}
+
+	ParticleDesc
+	{
+		name    "rift/pickup_green"
+	}
+}
+
+EntityBlueprint
+{
+	name effects/items/pickup_red
+
+	base_blueprints
+	{
+		 lights/point/muzzle_red_medium
+		 effects/default
+	}
+
+	ParticleDesc
+	{
+		name    "rift/pickup_green"
+	}
+}
+
+EntityBlueprint
+{
+	name "effects/items/gas_grenade_smoke"
+
+	base_blueprints
+	{
+		 lights/point/muzzle_green_big
+		 effects/default
+	}
+
+	ParticleDesc
+	{
+		name    "rift/acid_grenade_smoke"
+	}
+
+	SoundDesc
+	{
+		name "items/consumables/gas_grenade_explosion"
+	}
+	
+	LifeTimeDesc
+	{
+		time 		6
+	}		
+}
+
+EntityBlueprint
+{
+	name "effects/items/drone_swarm_activated"
+
+	base_blueprints
+	{
+		 lights/point/muzzle_green_big
+		 effects/default
+	}
+
+	ParticleDesc
+	{
+		name    "rift/drone_swarm_activated"
+	}
+
+	SoundDesc
+	{
+		name "items/consumables/drone_swarm_activated"
+	}	
+}
+
+EntityBlueprint
+{
+	name "effects/items/tombstone_pickup"
+
+	base_blueprints
+	{
+		effects/default
+		lights/point/muzzle_violet_medium		
+	}
+
+	SoundDesc
+	{
+		name "items/weapons/shotguns/shotgun_equipped"
+	}
+	
+	ParticleDesc
+	{
+		name    "rift/tombstone_pickup"
+	}	
+}
+
+EntityBlueprint
+{
+	name "effects/items/tombstone_pickup_idle"
+
+	base_blueprints
+	{
+		effects/no_lifetime
+	}
+	
+	ParticleDesc
+	{
+		name    "rift/tombstone_pickup_idle"
+	}	
+}
+
+EntityBlueprint
+{
+	name effects/items/poogret_food
+
+	base_blueprints 
+	{
+		lights/props/loot_container_small_violet
+		effects/no_lifetime
+	}
+
+	MinimapItemDesc
+	{
+		type	"quad"
+		color 
+		{
+			x "1"
+			y "1"
+			z "0"
+			w "1"
+		}
+		size
+		{
+			x "2"
+			y "2"
+		}
+		visibility		"discovered"
+		layer_group		"exploration"
+	}
+
+	ParticleDesc
+	{
+		name    "rift/poogret_food"
+	}
+}
+
+EntityBlueprint
+{
+	name effects/items/mech_holder_equipped
+
+	base_blueprints
+	{
+		effects/no_lifetime
+	}
+
+	SoundDesc
+	{
+		name "items/holder/equipped"
+	}
+	
+	ParticleDesc
+	{
+		name    "rift/holder_equipped"
+	}	
+}
+
+EntityBlueprint
+{
+	name effects/items/mech_holder_success
+
+	base_blueprints
+	{
+		effects/default
+	}
+
+	ParticleDesc
+	{
+		name    "rift/holder_success"
+	}
+
+	SoundDesc
+	{
+		name "items/holder/success"
+	}
+}
+
+EntityBlueprint
+{
+	name effects/items/mech_holder_activated
+
+	base_blueprints
+	{
+		effects/default
+	}
+
+	SoundDesc
+	{
+		name "items/holder/activated"
+	}
+}
+
+EntityBlueprint
+{
+	name effects/items/mech_holder_loop
+
+	base_blueprints
+	{
+		effects/no_lifetime
+	}
+
+	SoundDesc
+	{
+		name "items/holder/loop"
+	}
+}
+
+EntityBlueprint
+{
+	name effects/items/mech_holder_rotator
+
+	base_blueprints
+	{
+		effects/no_lifetime
+	}
+
+	ParticleDesc
+	{
+		name    "rift/holder_rotator"
+	}
+}
+
+EntityBlueprint
+{
+	name effects/items/mech_holder_energy
+
+	base_blueprints
+	{
+		effects/no_lifetime
+	}
+
+	ParticleDesc
+	{
+		name    "rift/holder_energy"
+	}
+}
+
+EntityBlueprint
+{
+	name effects/items/dodge_roll_start
+	
+	base_blueprints
+	{
+		effects/default
+	}	
+
+	SoundDesc
+	{
+		name "items/skills/dodge_roll_start"
+	}	
+}
+
+EntityBlueprint
+{
+	name effects/items/dodge_roll_hit
+	
+	base_blueprints
+	{
+		effects/default
+	}	
+	
+	ParticleDesc
+	{
+		name    "rift/dodge_roll_hit"
+	}	
+
+	SoundDesc
+	{
+		name "items/skills/dodge_roll_hit"
+	}	
+}
+
+EntityBlueprint
+{
+	name effects/items/dodge_roll_explosion_standard
+
+	base_blueprints
+	{
+		effects/weapons_elemental/hit
+		lights/point/explosion_white_big
+		effects/default
+	}
+	
+	BombAmmoComponent
+	{		
+		DamagePattern
+		{
+			area_damage_radius	"7"
+			area_damage_speed 	"40"
+
+			Damages
+			{
+				Damage
+				{
+					value 			"250"
+					type			"area"
+				}
+			}
+		}
+	}	
+
+	ShockWaveDesc
+	{
+		power 	"2000"
+		speed 	"40"
+		radius 	"20"
+	}
+
+	ParticleDesc
+	{
+		name    "rift/dodge_roll_explosion"
+	}
+
+	CameraShakeDesc
+	{
+		duration 		"0.4"
+		power   		"0.7"
+		falloff_radius 	"30"
+		radius   		"50"
+		frequency 		"20"
+		group			"explosion_big"
+	}
+
+	SoundDesc
+	{
+		name "items/skills/dodge_roll_explosion"
+	}
+
+	DecalDesc
+	{	
+		blueprint "effects/decals/explosion_hole_random"
+		scale
+		{
+			x		5.0
+			y		5.0
+			z		5.0
+		}
+	}		
+}
+
+EntityBlueprint
+{
+	name effects/items/dodge_roll_explosion_advanced
+
+	base_blueprints
+	{
+		effects/items/dodge_roll_explosion_standard
+	}
+	
+	BombAmmoComponent
+	{		
+		DamagePattern
+		{
+			area_damage_radius	"7"
+			area_damage_speed 	"40"
+
+			Damages
+			{
+				Damage
+				{
+					value 			"350"
+					type			"area"
+				}
+			}
+		}
+	}		
+}
+
+EntityBlueprint
+{
+	name effects/items/dodge_roll_explosion_superior
+
+	base_blueprints
+	{
+		effects/items/dodge_roll_explosion_standard
+	}
+	
+	BombAmmoComponent
+	{		
+		DamagePattern
+		{
+			area_damage_radius	"7"
+			area_damage_speed 	"40"
+
+			Damages
+			{
+				Damage
+				{
+					value 			"500"
+					type			"area"
+				}
+			}
+		}
+	}		
+}
+
+EntityBlueprint
+{
+	name effects/items/dodge_roll_explosion_extreme
+
+	base_blueprints
+	{
+		effects/items/dodge_roll_explosion_standard
+	}
+	
+	BombAmmoComponent
+	{		
+		DamagePattern
+		{
+			area_damage_radius	"7"
+			area_damage_speed 	"40"
+
+			Damages
+			{
+				Damage
+				{
+					value 			"650"
+					type			"area"
+				}
+			}
+		}
+	}		
+}

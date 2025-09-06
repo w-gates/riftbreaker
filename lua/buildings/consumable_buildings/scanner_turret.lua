@@ -85,7 +85,7 @@ function scanner_turret:ExecuteScanning()
             EffectService:SetParticleEmmissionUniform( self.effect, factor )
             if ( self.scanningTime >= 0.01 ) then
                 local player  = PlayerService:GetPlayerForEntity( self.entity )
-	            for count = 1, 10 do
+	            for count = 1, 100 do
 		            ItemService:ScanEntityByPlayer( self.selectedEntity, player )
 	            end
                 EntityService:RemoveComponent( self.selectedEntity, "ScannableComponent" )

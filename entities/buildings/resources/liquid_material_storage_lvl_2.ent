@@ -1,23 +1,24 @@
 EntityBlueprint
 {
-	name  "buildings/resources/ammunition_storage_lvl_3"
+	name  					"buildings/resources/liquid_material_storage_lvl_2"
 
-	base_blueprint buildings/resources/ammunition_storage_lvl_2
+	base_blueprint 			buildings/resources/liquid_material_storage
 
 	BuildingDesc
 	{
 		buildable 			"0"
-		name 				"ammunition_storage_lvl_3"
-		bp   				"buildings/resources/ammunition_storage_lvl_3"
+		name 				"liquid_material_storage_lvl_2"
+		bp   				"buildings/resources/liquid_material_storage_lvl_2"
 		category 			"resources"
-		localization_id		"gui/hud/building_name/ammunition_storage"
-		description			"gui/hud/building_description/ammunition_storage"
-		menu_icon			"gui/hud/building_icons/ammunition_storage_lvl3"
+		type				"pipe"
+		localization_id		"gui/hud/building_name/liquid_material_storage"
+		description			"gui/hud/building_description/liquid_material_storage"
+		menu_icon			"gui/hud/building_icons/liquid_material_storage_lvl2"
 		require 			"headquarters"
-		limit			    "2"
-		limit_name			"ammo_storage"
-		//upgrade				"buildings/resources/ammunition_storage_lvl_4"
+		upgrade				"buildings/resources/liquid_material_storage_lvl_3"
 		exclude_terrain_types "magma_hot_ground,magma_very_hot_ground"
+		menu_action			"resource_clear"
+		overrides			"pipe_ground,pipe_connector_t,pipe_connector_x,pipe_corner,pipeline,pipe_straight_windowless"
 
 		costs
 		{
@@ -27,7 +28,64 @@ EntityBlueprint
 				building_time 10
 				building_cost
 				{
-					carbonium 	"1600"
+					steel 		"200"
+					carbonium 	"200"
+				}
+			}
+		}
+	}
+
+	MeshDesc
+	{
+		mesh 		"meshes/buildings/resources/liquid_material_storage.mesh"
+		material 	"buildings/resources/liquid_material_storage"
+
+		SubMeshes
+		{
+			SubMesh
+			{
+				id "1"
+				material "resources/resource_empty_fresnel"
+			}
+		}
+	}
+
+	SkeletonDesc
+	{
+		name "meshes/buildings/resources/liquid_material_storage"
+	}
+
+	PhysicsDesc
+ 	{
+		objects
+		{
+			PhysicsObjectDesc
+			{
+				type 				"static"
+				group_id 			"building"
+				physics_material 	"default"
+				Shapes
+				{
+					PhysicsCapsuleShape
+					{
+						r "2.45"
+						half_height "2"
+
+						position
+						{
+							x "0.0"
+							y "1.5"
+							z "0.0"
+						}
+
+						orientation
+						{
+							w "0.7"
+							x "0.0"
+							z "0.7"
+							y "0.0"
+						}
+					}
 				}
 			}
 		}
@@ -39,13 +97,9 @@ EntityBlueprint
 		{
 			Storage
 			{
-				group		 "ammo_mech"
-				max 	 	 "8.0"
-			}
-			Storage
-			{
-				group		 "ammo_tower"
-				max 	 	 "64"
+				group	 		"local"
+				max 	 		"500000"
+				attachment		"att_in_1|att_in_2|att_in_3|att_in_4"
 			}
 			Storage
 			{
@@ -55,10 +109,14 @@ EntityBlueprint
 		}
 	}
 
+	PipeComponent
+	{
+		attachment		"att_in_1,att_in_2,att_in_3,att_in_4"
+	}
 	HealthDesc
 	{
-		max_health 					"1600"
-		health 						"1600"
+		max_health 					"1300"
+		health 						"1300"
 		regeneration 				"0"
 		regeneration_cooldown 		"0"
 		 is_manual 1
@@ -119,50 +177,4 @@ EntityBlueprint
 		}
 	}
 
-	MeshDesc
-	{
-		mesh "meshes/buildings/resources/ammunition_storage_lvl_3.mesh"
-		material "buildings/resources/ammunition_storage_lvl_3"
-	}
-
-	SkeletonDesc
-	{
-		name "meshes/buildings/resources/ammunition_storage_lvl_3"
-	}
-
-	AnimationDesc
-	{
-		animations
-		{
-			Anim
-			{
-				animName "working"
-				animTime "0.0"
-			}
-		}
-	}
-
-
-
-	EffectDesc
-	{
-		EffectBaseBlueprints
-		{
-			"buildings/effects_medium_base"
-		}
-
-		EffectGroup
-		{
-			group "level"
-			enabled "1"
-			Effects
-			{
-				Effect
-				{
-					blueprint "effects/buildings_and_machines/level_3"
-					bone "att_level"
-				}
-			}
-		}
-	}
 }

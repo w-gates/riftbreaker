@@ -1,23 +1,24 @@
 EntityBlueprint
 {
-	name  "buildings/resources/ammunition_storage_lvl_3"
+	name  					"buildings/resources/liquid_material_storage_lvl_3"
 
-	base_blueprint buildings/resources/ammunition_storage_lvl_2
+	base_blueprint 			buildings/resources/liquid_material_storage_lvl_2
 
 	BuildingDesc
 	{
 		buildable 			"0"
-		name 				"ammunition_storage_lvl_3"
-		bp   				"buildings/resources/ammunition_storage_lvl_3"
+		name 				"liquid_material_storage_lvl_3"
+		bp   				"buildings/resources/liquid_material_storage_lvl_3"
 		category 			"resources"
-		localization_id		"gui/hud/building_name/ammunition_storage"
-		description			"gui/hud/building_description/ammunition_storage"
-		menu_icon			"gui/hud/building_icons/ammunition_storage_lvl3"
+		type				"pipe"
+		localization_id		"gui/hud/building_name/liquid_material_storage"
+		description			"gui/hud/building_description/liquid_material_storage"
+		menu_icon			"gui/hud/building_icons/liquid_material_storage_lvl3"
 		require 			"headquarters"
-		limit			    "2"
-		limit_name			"ammo_storage"
-		//upgrade				"buildings/resources/ammunition_storage_lvl_4"
+		//upgrade				"buildings/resources/liquid_material_storage_lvl_4"
 		exclude_terrain_types "magma_hot_ground,magma_very_hot_ground"
+		menu_action			"resource_clear"
+		overrides			"pipe_ground,pipe_connector_t,pipe_connector_x,pipe_corner,pipeline,pipe_straight_windowless"
 
 		costs
 		{
@@ -27,7 +28,64 @@ EntityBlueprint
 				building_time 10
 				building_cost
 				{
-					carbonium 	"1600"
+					steel 		"300"
+					carbonium 	"300"
+				}
+			}
+		}
+	}
+
+	MeshDesc
+	{
+		mesh 		"meshes/buildings/resources/liquid_material_storage_lvl_3.mesh"
+		material 	"buildings/resources/liquid_material_storage_lvl_3"
+
+		SubMeshes
+		{
+			SubMesh
+			{
+				id "1"
+				material "resources/resource_empty_fresnel"
+			}
+		}
+	}
+
+	SkeletonDesc
+	{
+		name "meshes/buildings/resources/liquid_material_storage_lvl_3"
+	}
+
+	PhysicsDesc
+ 	{
+		objects
+		{
+			PhysicsObjectDesc
+			{
+				type 				"static"
+				group_id 			"building"
+				physics_material 	"default"
+				Shapes
+				{
+					PhysicsCapsuleShape
+					{
+						r "2.45"
+						half_height "2.5"
+
+						position
+						{
+							x "0.0"
+							y "2"
+							z "0.0"
+						}
+
+						orientation
+						{
+							w "0.7"
+							x "0.0"
+							z "0.7"
+							y "0.0"
+						}
+					}
 				}
 			}
 		}
@@ -39,13 +97,9 @@ EntityBlueprint
 		{
 			Storage
 			{
-				group		 "ammo_mech"
-				max 	 	 "8.0"
-			}
-			Storage
-			{
-				group		 "ammo_tower"
-				max 	 	 "64"
+				group	 		"local"
+				max 	 		"1000000"
+				attachment		"att_in_1|att_in_2|att_in_3|att_in_4"
 			}
 			Storage
 			{
@@ -53,6 +107,11 @@ EntityBlueprint
 				max 	 "0"
 			}
 		}
+	}
+
+	PipeComponent
+	{
+		attachment		"att_in_1,att_in_2,att_in_3,att_in_4"
 	}
 
 	HealthDesc
@@ -72,7 +131,6 @@ EntityBlueprint
 				destroy_state_change_effect_group 	"80_transition"
 				destroy_comp_delay 					"0.5"
 				destroy_comp_event 					"80_destroy"
-				//destroyed_state_material 			"buildings/main/headquarters_dest_50"
 				destroyed_state_effect_group 		"80_state"
 				destrucion_level_name 				"80"
 
@@ -83,7 +141,6 @@ EntityBlueprint
 				destroy_state_change_effect_group 	"60_transition"
 				destroy_comp_delay 					"0.5"
 				destroy_comp_event 					"60_destroy"
-				//destroyed_state_material 			"buildings/main/headquarters_dest_25"
 				destroyed_state_effect_group 		"60_state"
 				destrucion_level_name 				"60"
 			}
@@ -93,7 +150,6 @@ EntityBlueprint
 				destroy_state_change_effect_group 	"40_transition"
 				destroy_comp_delay 					"0.5"
 				destroy_comp_event 					"40_destroy"
-				//destroyed_state_material 			"buildings/main/headquarters_dest_0"
 				destroyed_state_effect_group 		"40_state"
 				destrucion_level_name 				"40"
 			}
@@ -103,7 +159,6 @@ EntityBlueprint
 				destroy_state_change_effect_group 	"20_transition"
 				destroy_comp_delay 					"0.5"
 				destroy_comp_event 					"20_destroy"
-				//destroyed_state_material 			"units_ground/medium_tank_regular_dest_0"
 				destroyed_state_effect_group 		"20_state"
 				destrucion_level_name 				"20"
 			}
@@ -113,56 +168,9 @@ EntityBlueprint
 				destroy_state_change_effect_group 	"0_transition"
 				destroy_comp_delay 					"0.6"
 				destroy_comp_event 					"default"
-				//destroyed_state_material 			"units_ground/medium_tank_regular_dest_0"
 				//destroyed_state_effect_group 		"0_state"
 			}
 		}
 	}
 
-	MeshDesc
-	{
-		mesh "meshes/buildings/resources/ammunition_storage_lvl_3.mesh"
-		material "buildings/resources/ammunition_storage_lvl_3"
-	}
-
-	SkeletonDesc
-	{
-		name "meshes/buildings/resources/ammunition_storage_lvl_3"
-	}
-
-	AnimationDesc
-	{
-		animations
-		{
-			Anim
-			{
-				animName "working"
-				animTime "0.0"
-			}
-		}
-	}
-
-
-
-	EffectDesc
-	{
-		EffectBaseBlueprints
-		{
-			"buildings/effects_medium_base"
-		}
-
-		EffectGroup
-		{
-			group "level"
-			enabled "1"
-			Effects
-			{
-				Effect
-				{
-					blueprint "effects/buildings_and_machines/level_3"
-					bone "att_level"
-				}
-			}
-		}
-	}
 }

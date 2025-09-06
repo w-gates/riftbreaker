@@ -12,7 +12,7 @@ EntityBlueprint
 		description			"gui/hud/building_description/armory"
 		menu_icon			"gui/hud/building_icons/weapons_factory"
 		order				"2"
-		limit			    "10"
+		limit			    "1"
 		limit_name			"armory"
 		require 			"headquarters"
 		upgrade				"buildings/main/armory_lvl_2"
@@ -42,18 +42,18 @@ EntityBlueprint
 			GameplayResource
 			{
 				resource 			"energy"
-				value	"40"
+				value	"80"
 			}
 			GameplayResource
 			{
 				resource 			"carbonium"
-				value	"1"
+				value	"2"
 			}
 
 			GameplayResource
 			{
 				resource 			"steel"
-				value	"1"
+				value	"2"
 			}
 		}
 
@@ -62,14 +62,14 @@ EntityBlueprint
 			GameplayResource
 			{
 				resource 			"consumables_manufacturing"
-				value				"1.5"
+				value				"3"
 				family				"manufacturing"
 			}
 
 			GameplayResource
 			{
 				resource 			"player_ammo_manufacturing"
-				value				"1"
+				value				"2.0"
 				family				"manufacturing"
 			}
 		}

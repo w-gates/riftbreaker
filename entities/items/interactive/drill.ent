@@ -115,7 +115,7 @@ EntityBlueprint
 
 		database
 		{
-			radius				float:"2"
+			radius				float:"10"
 			amount				float:"120"
 			resource			string:"iron_vein|carbon_vein|uranium_ore_vein|titanium_vein|palladium_vein|cobalt_vein"
 		}
