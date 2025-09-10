@@ -120,18 +120,18 @@ function drill:OnExecuteDrilling()
 	end
 
 	self.duration = 0.0
-	if (PlayerService:HarvestResource( interactive, self.item ) == false ) then
-		ItemService:InteractWithEntity( interactive, self.owner )
+	-- if (PlayerService:HarvestResource( interactive, self.item ) == false ) then
+	-- 	ItemService:InteractWithEntity( interactive, self.owner )
 
-		EffectService:AttachEffects( interactive, "treasure" )
-	end
-	-- for count = 1, 2 do
-	-- 	if (PlayerService:HarvestResource( interactive, self.item ) == false ) then
-	-- 		ItemService:InteractWithEntity( interactive, self.owner )
-
-	-- 		EffectService:AttachEffects( interactive, "treasure" )
-	-- 	end
+	-- 	EffectService:AttachEffects( interactive, "treasure" )
 	-- end
+	for count = 1, 4 do
+		if (PlayerService:HarvestResource( interactive, self.item ) == false ) then
+			ItemService:InteractWithEntity( interactive, self.owner )
+
+			EffectService:AttachEffects( interactive, "treasure" )
+		end
+	end
 end
 
 function drill:OnAnimationStateChangedEvent( evt )

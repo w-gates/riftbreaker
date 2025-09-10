@@ -130,7 +130,7 @@ function scanner:OnExecuteScaning()
 				factor = math.min(factor, 1.0 )
 				EffectService:SetParticleEmmissionUniform( self.effect, factor )
 				if ( self.scanningTime >= 0.01 ) then
-					for count = 1, 1000 do
+					for count = 1, 100 do
 						ItemService:ScanEntity( currentTarget, self.owner )
 					end
 					EntityService:RemoveComponent( currentTarget, "ScannableComponent" )
