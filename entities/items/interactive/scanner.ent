@@ -82,7 +82,7 @@ EntityBlueprint
 
 	LaserBeamComponent
 	{
-		range 						"100"
+		range 						"500"
 
 		ring_bp 					"items/equipment/scanner_ring"
 
