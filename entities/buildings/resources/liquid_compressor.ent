@@ -1,35 +1,32 @@
 EntityBlueprint
 {
-	name  "buildings/main/armory"
+	name  "buildings/resources/liquid_compressor"
 
 	BuildingDesc
 	{
-		name 				"armory"
-		bp   				"buildings/main/armory"
-		category 			"main"
-		//type				"pipe"
-		localization_id		"gui/hud/building_name/armory"
-		description			"gui/hud/building_description/armory"
-		menu_icon			"gui/hud/building_icons/weapons_factory"
-		order				"2"
-		limit			    "4"
-		limit_name			"armory"
-		require 			"headquarters"
-		upgrade				"buildings/main/armory_lvl_2"
-		menu_action 		"crafting"
-		exclude_terrain_types "magma_hot_ground,magma_very_hot_ground"
-		hide_treasures 		"1"
+		name 					"liquid_compressor"
+		bp   					"buildings/resources/liquid_compressor"
+		category 				"resources"
+		localization_id			"gui/hud/building_name/liquid_compressor"
+		description				"gui/hud/building_description/liquid_compressor"
+		menu_icon				"gui/hud/building_icons/liquid_compressor"
+		type					"pipe"
+		require 				"headquarters"
+		upgrade					"buildings/resources/liquid_compressor_lvl_2"
+		order					"15"
+		exclude_terrain_types 	"magma_hot_ground,magma_very_hot_ground"
+		overrides				"pipe_ground,pipe_connector_t,pipe_connector_x,pipe_corner,pipeline,pipe_straight_windowless"
 
 		costs
 		{
 			BuildingCostInfo
 			{
-				name "default"
-				building_time 60
+				name 			"default"
+				building_time 	60
 				building_cost
 				{
-					carbonium 	"50"
-					steel 		"200"
+					carbonium 	"350"
+					steel 		"350"
 				}
 			}
 		}
@@ -41,19 +38,17 @@ EntityBlueprint
 		{
 			GameplayResource
 			{
-				resource 			"energy"
-				value	"80"
-			}
-			GameplayResource
-			{
-				resource 			"carbonium"
-				value	"2"
+				group 			"local"
+				value			"100"
+				family			"production"
+				attachment		"att_in_1"
+
 			}
 
 			GameplayResource
 			{
-				resource 			"steel"
-				value	"2"
+				resource		"energy"
+				value			"500"
 			}
 		}
 
@@ -61,41 +56,28 @@ EntityBlueprint
 		{
 			GameplayResource
 			{
-				resource 			"consumables_manufacturing"
-				value				"3"
-				family				"manufacturing"
-			}
-
-			GameplayResource
-			{
-				resource 			"player_ammo_manufacturing"
-				value				"2.0"
-				family				"manufacturing"
+				group 			"local_compressed"
+				family			"production"
+				value			"100"
 			}
 		}
+
+		one_vein_mode "1"
+		continous_local_production "1"
 		priority 5
 	}
 
 	LuaDesc
 	{
-		script "lua/buildings/main/armory.lua"
+		script "lua/buildings/resources/compressor.lua"
 
 		database
 		{
-			cone_effect			string:"build_cone_5x5"
-			cone_effect_sell	string:"sell_big"
+			cone_effect			string:	"build_cone_4x4"
+			cone_effect_sell	string:	"sell_big"
+			postfix				string:"_storage"
 		}
 
-	}
-
-	InteractiveComponent
-	{
-		slot 			"ACTIVATOR"
-		radius 			"6"
-		remove_entity 	 "0"
-		remove_component "0"
-		recreate_component "1"
-		priority			"1"
 	}
 
 	HealthDesc
@@ -104,7 +86,7 @@ EntityBlueprint
 		health 						"2000"
 		regeneration 				"0"
 		regeneration_cooldown 		"0"
-		is_manual 1
+		is_manual 					1
 		update_health_uniform 		"1"
 
 
@@ -125,7 +107,6 @@ EntityBlueprint
 				destroy_state_change_effect_group "80_transition"
 				destroy_comp_delay "0.6"
 				destroy_comp_event "80_destroy"
-				//destroyed_state_material "buildings/main/headquarters_dest_75"
 				destroyed_state_effect_group "80_state"
 				destrucion_level_name "80"
 			}
@@ -144,7 +125,6 @@ EntityBlueprint
 				destroy_state_change_effect_group "60_transition"
 				destroy_comp_delay "0.6"
 				destroy_comp_event "60_destroy"
-				//destroyed_state_material "buildings/main/headquarters_dest_50"
 				destroyed_state_effect_group "60_state"
 				destrucion_level_name "60"
 			}
@@ -163,7 +143,6 @@ EntityBlueprint
 				destroy_state_change_effect_group "40_transition"
 				destroy_comp_delay "0.6"
 				destroy_comp_event "40_destroy"
-				//destroyed_state_material "buildings/main/headquarters_dest_25"
 				destroyed_state_effect_group "40_state"
 				destrucion_level_name "40"
 			}
@@ -182,7 +161,6 @@ EntityBlueprint
 				destroy_state_change_effect_group "20_transition"
 				destroy_comp_delay "0.6"
 				destroy_comp_event "20_destroy"
-				//destroyed_state_material "buildings/main/headquarters_dest_0"
 				destroyed_state_effect_group "20_state"
 				destrucion_level_name "20"
 			}
@@ -201,8 +179,6 @@ EntityBlueprint
 				destroy_state_change_effect_group "0_transition"
 				destroy_comp_delay "0.7"
 				destroy_comp_event "default"
-				//destroyed_state_material "buildings/main/headquarters_dest_0"
-				//destroyed_state_effect_group "0_state"
 				destrucion_level_name "0"
 			}
 		}
@@ -210,19 +186,34 @@ EntityBlueprint
 
 	MeshDesc
 	{
-		mesh "meshes/buildings/main/weapons_factory.mesh"
-		material "buildings/main/weapons_factory"
+		mesh 		"meshes/buildings/resources/liquid_compressor.mesh"
+		material 	"buildings/resources/liquid_compressor_lvl_1_3"
+
+		SubMeshes
+		{
+			SubMesh
+			{
+				id "1"
+				material "resources/resource_empty_fresnel"
+			}
+
+			SubMesh
+			{
+				id "2"
+				material "buildings/resources/liquid_compressor_barrel"
+			}
+		}
 	}
 
 	TypeDesc
 	{
-		type "building|main"
+		type "building|resource"
 	}
 
 	SkeletonDesc
 	{
-		name "meshes/buildings/main/weapons_factory"
-	}
+		 name "meshes/buildings/resources/liquid_compressor"
+ 	}
 
 	AnimationGraphDesc
 	{
@@ -230,7 +221,7 @@ EntityBlueprint
 	}
 
 	PhysicsDesc
-	{
+ 	{
 		objects
 		{
 			PhysicsObjectDesc
@@ -242,7 +233,7 @@ EntityBlueprint
 				{
 					PhysicsSphereShape
 					{
-						r "4.45"
+						r "3.45"
 
 						position
 						{
@@ -267,22 +258,33 @@ EntityBlueprint
 	{
 		Shapes
 		{
-			PhysicsBoxShape
-			{
-				x	10
-				y	10
-				z	10
-			}
+   			PhysicsBoxShape
+   			{
+    				x	8
+    				y	8
+    				z	8
+   			}
 		}
 	}
 
 	MinimapItemDesc
 	{
-		type				"image"
-		icon_material 		"gui/hud/minimap_icons/armory"
-		additional_z_order 	1
+		type	"quad"
+		color
+		{
+			x "0.5"
+			y "0.5"
+			z "1"
+			w "1"
+		}
+		size
+		{
+			x "4"
+			y "4"
+		}
+
 		visibility			"always"
-		layer_group			"important_buildings"
+		layer_group			"common_buildings"
 	}
 
 	FogOfWarRevealerComponentDesc
@@ -429,25 +431,61 @@ EntityBlueprint
 		{
 			"buildings/effects_big_base"
 		}
-
+////////////////////////Resources/////////////////////////
 		EffectGroup
 		{
-			group "working"
+			group "att_in_1"
 			enabled "0"
+			delay "0"
 
 			Effects
 			{
 				Effect
 				{
-					blueprint "effects/buildings_and_machines/steel_factory_furnace"
-					bone "att_chimney"
+					blueprint "effects/buildings_and_machines/building_arrow"
+					bone "att_in_arrow"
 				}
+			}
+		}
+////////////////////////MISC/////////////////////////
+		EffectGroup
+		{
+			group "working"
+			enabled "0"
+			Effects
+			{
 				Effect
 				{
-					blueprint "effects/buildings_main/armory_working"
+					blueprint "effects/buildings_resources/liquid_compressor_working"
 					delay "0.5"
 				}
 			}
 		}
+		EffectGroup
+		{
+			group "teleport"
+			enabled "0"
+			Effects
+			{
+				Effect
+				{
+					blueprint "effects/buildings_resources/liquid_decompressor_teleport"
+					bone "att_teleport"
+				}
+			}
+		}		
+		EffectGroup
+		{
+			group "energy"
+			enabled "0"
+			Effects
+			{
+				Effect
+				{
+					blueprint "effects/buildings_resources/liquid_compressor_energy"
+					bone "barrel"
+				}
+			}
+		}				
 	}
 }
