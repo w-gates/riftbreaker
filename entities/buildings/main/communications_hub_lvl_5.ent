@@ -1,25 +1,24 @@
 EntityBlueprint
 {
-	name  "buildings/main/armory_lvl_5"
+	name  "buildings/main/communications_hub_lvl_5"
 
-	base_blueprint "buildings/main/armory_lvl_4"
+	base_blueprint buildings/main/communications_hub_lvl_4
 
 	BuildingDesc
 	{
 		buildable 			"0"
-		name 				"armory_lvl_5"
-		bp   				"buildings/main/armory_lvl_5"
-		category 			"resources"
-		//type				"pipe"
-		localization_id		"gui/hud/building_name/armory"
-		description			"gui/hud/building_description/armory"
-		menu_icon			"gui/hud/building_icons/weapons_factory_lvl5"
-		order				"2"
+		name 				"communications_hub_lvl_5"
+		bp   				"buildings/main/communications_hub_lvl_5"
+		category 			"main"
+		localization_id		"gui/hud/building_name/communications_hub"
+		description			"gui/hud/building_description/communications_hub"
+		menu_icon			"gui/hud/building_icons/communications_hub_lvl5"
+		order				"3"
 		limit			    "999"
-		limit_name			"armory"
-		require 			"headquarters"
-		//upgrade				"buildings/main/armory_lvl_6"
-		menu_action 		"crafting"
+		limit_name			"communications_hub"
+		require 			"headquarters_lvl_2"
+		//upgrade				"buildings/main/communications_hub_lvl_5"
+		menu_action 		"research"
 		exclude_terrain_types "magma_hot_ground,magma_very_hot_ground"
 		hide_treasures 		"1"
 
@@ -28,11 +27,11 @@ EntityBlueprint
 			BuildingCostInfo
 			{
 				name "default"
-				building_time 60
+				building_time 120
 				building_cost
 				{
-					carbonium 	"1600"
-					steel 		"3200"
+					carbonium 	"6400"
+					steel 		"9600"
 				}
 			}
 		}
@@ -45,46 +44,25 @@ EntityBlueprint
 			GameplayResource
 			{
 				resource 			"energy"
-				value	"400"
+				value			 	"800"
 			}
-
-			GameplayResource
-			{
-				resource 			"carbonium"
-				value	"4"
-			}
-
-			GameplayResource
-			{
-				resource 			"steel"
-				value	"4"
-			}
-
 		}
 
 		out
 		{
 			GameplayResource
 			{
-				resource 			"consumables_manufacturing"
-				value				"20"
-				family				"manufacturing"
-			}
-
-			GameplayResource
-			{
-				resource 			"player_ammo_manufacturing"
-				value				"4.0"
-				family				"manufacturing"
+				resource 			"download"
+				value			 	"5"
 			}
 		}
-		priority 5
+		priority 2
 	}
 
 	HealthDesc
 	{
-		max_health 					"6000"
-		health 						"6000"
+		max_health 					"5500"
+		health 						"5500"
 		regeneration 				"0"
 		regeneration_cooldown 		"0"
 		 is_manual 1
@@ -108,6 +86,7 @@ EntityBlueprint
 				destroy_state_change_effect_group "80_transition"
 				destroy_comp_delay "0.6"
 				destroy_comp_event "80_destroy"
+				//destroyed_state_material "buildings/main/headquarters_dest_75"
 				destroyed_state_effect_group "80_state"
 				destrucion_level_name "80"
 			}
@@ -126,6 +105,7 @@ EntityBlueprint
 				destroy_state_change_effect_group "60_transition"
 				destroy_comp_delay "0.6"
 				destroy_comp_event "60_destroy"
+				//destroyed_state_material "buildings/main/headquarters_dest_50"
 				destroyed_state_effect_group "60_state"
 				destrucion_level_name "60"
 			}
@@ -144,6 +124,7 @@ EntityBlueprint
 				destroy_state_change_effect_group "40_transition"
 				destroy_comp_delay "0.6"
 				destroy_comp_event "40_destroy"
+				//destroyed_state_material "buildings/main/headquarters_dest_25"
 				destroyed_state_effect_group "40_state"
 				destrucion_level_name "40"
 			}
@@ -162,6 +143,7 @@ EntityBlueprint
 				destroy_state_change_effect_group "20_transition"
 				destroy_comp_delay "0.6"
 				destroy_comp_event "20_destroy"
+				//destroyed_state_material "buildings/main/headquarters_dest_0"
 				destroyed_state_effect_group "20_state"
 				destrucion_level_name "20"
 			}
@@ -180,6 +162,8 @@ EntityBlueprint
 				destroy_state_change_effect_group "0_transition"
 				destroy_comp_delay "0.7"
 				destroy_comp_event "default"
+				//destroyed_state_material "buildings/main/headquarters_dest_0"
+				//destroyed_state_effect_group "0_state"
 				destrucion_level_name "0"
 			}
 		}
@@ -191,7 +175,7 @@ EntityBlueprint
 		{
 			"buildings/effects_big_base"
 		}
-
+////////////////////////MISC/////////////////////////
 		EffectGroup
 		{
 			group "working"
@@ -201,16 +185,17 @@ EntityBlueprint
 			{
 				Effect
 				{
-					blueprint "effects/buildings_and_machines/steel_factory_furnace"
-					bone "att_chimney"
+					blueprint "effects/buildings_and_machines/comms_hub_energy"
+					bone "att_antenna"
 				}
 				Effect
 				{
-					blueprint "effects/buildings_main/armory_working"
+					blueprint "effects/buildings_main/communications_hub_working"
 					delay "0.5"
 				}
 			}
 		}
+
 		EffectGroup
 		{
 			group "level"

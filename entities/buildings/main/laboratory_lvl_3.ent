@@ -1,26 +1,27 @@
 EntityBlueprint
 {
-	name  "buildings/main/armory_lvl_5"
+	name  "buildings/main/laboratory_lvl_3"
 
-	base_blueprint "buildings/main/armory_lvl_4"
+	base_blueprint "buildings/main/laboratory_lvl_2"
 
 	BuildingDesc
 	{
-		buildable 			"0"
-		name 				"armory_lvl_5"
-		bp   				"buildings/main/armory_lvl_5"
-		category 			"resources"
-		//type				"pipe"
-		localization_id		"gui/hud/building_name/armory"
-		description			"gui/hud/building_description/armory"
-		menu_icon			"gui/hud/building_icons/weapons_factory_lvl5"
-		order				"2"
+		name 				"laboratory_lvl_3"
+		bp   				"buildings/main/laboratory_lvl_3"
+		category 			"main"
+		localization_id		"gui/hud/building_name/laboratory"
+		description			"gui/hud/building_description/laboratory"
+		menu_icon			"gui/hud/building_icons/laboratory_lvl3"
+		type				"pipe"
+		order				"4"
 		limit			    "999"
-		limit_name			"armory"
+		limit_name			"laboratory"
 		require 			"headquarters"
-		//upgrade				"buildings/main/armory_lvl_6"
-		menu_action 		"crafting"
+		menu_action			"research"
+		upgrade				"buildings/main/laboratory_lvl_4"
+		buildable			"0"
 		exclude_terrain_types "magma_hot_ground,magma_very_hot_ground"
+		overrides			"pipe_ground,pipe_connector_t,pipe_connector_x,pipe_corner,pipeline,pipe_straight_windowless"
 		hide_treasures 		"1"
 
 		costs
@@ -28,11 +29,11 @@ EntityBlueprint
 			BuildingCostInfo
 			{
 				name "default"
-				building_time 60
+				building_time 90
 				building_cost
 				{
-					carbonium 	"1600"
-					steel 		"3200"
+					carbonium 	"8000"
+					steel 		"6000"
 				}
 			}
 		}
@@ -45,46 +46,32 @@ EntityBlueprint
 			GameplayResource
 			{
 				resource 			"energy"
-				value	"400"
+				value			 	"1000"
 			}
 
 			GameplayResource
 			{
-				resource 			"carbonium"
-				value	"4"
+				resource 			"water"
+				value			 	"100"
+				attachment			"att_in_1"
 			}
-
-			GameplayResource
-			{
-				resource 			"steel"
-				value	"4"
-			}
-
 		}
 
 		out
 		{
 			GameplayResource
 			{
-				resource 			"consumables_manufacturing"
-				value				"20"
-				family				"manufacturing"
-			}
-
-			GameplayResource
-			{
-				resource 			"player_ammo_manufacturing"
-				value				"4.0"
-				family				"manufacturing"
+				resource 			"analysis"
+				value			 	"3"
 			}
 		}
-		priority 5
+		priority 2
 	}
 
 	HealthDesc
 	{
-		max_health 					"6000"
-		health 						"6000"
+		max_health 					"4500"
+		health 						"4500"
 		regeneration 				"0"
 		regeneration_cooldown 		"0"
 		 is_manual 1
@@ -184,14 +171,30 @@ EntityBlueprint
 			}
 		}
 	}
-
 	EffectDesc
 	{
+
 		EffectBaseBlueprints
 		{
 			"buildings/effects_big_base"
 		}
+////////////////////////Resources/////////////////////////
+		EffectGroup
+		{
+			group "att_in_1"
+			enabled "0"
+			delay "0"
 
+			Effects
+			{
+				Effect
+				{
+					blueprint "effects/buildings_and_machines/building_arrow"
+					bone "att_in_arrow"
+				}
+			}
+		}
+////////////////////////MISC/////////////////////////
 		EffectGroup
 		{
 			group "working"
@@ -201,13 +204,8 @@ EntityBlueprint
 			{
 				Effect
 				{
-					blueprint "effects/buildings_and_machines/steel_factory_furnace"
-					bone "att_chimney"
-				}
-				Effect
-				{
-					blueprint "effects/buildings_main/armory_working"
-					delay "0.5"
+					blueprint "effects/buildings_main/research_lab_energy"
+					bone "be_sphere"
 				}
 			}
 		}
@@ -219,10 +217,11 @@ EntityBlueprint
 			{
 				Effect
 				{
-					blueprint "effects/buildings_and_machines/level_5"
+					blueprint "effects/buildings_and_machines/level_3"
 					bone "att_level"
 				}
 			}
 		}
 	}
+
 }

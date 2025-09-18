@@ -1,23 +1,24 @@
 EntityBlueprint
 {
-	name  "buildings/main/armory"
+	name  "buildings/main/laboratory"
 
 	BuildingDesc
 	{
-		name 				"armory"
-		bp   				"buildings/main/armory"
+		name 				"laboratory"
+		bp   				"buildings/main/laboratory"
 		category 			"main"
-		//type				"pipe"
-		localization_id		"gui/hud/building_name/armory"
-		description			"gui/hud/building_description/armory"
-		menu_icon			"gui/hud/building_icons/weapons_factory"
-		order				"2"
+		localization_id		"gui/hud/building_name/laboratory"
+		description			"gui/hud/building_description/laboratory"
+		menu_icon			"gui/hud/building_icons/laboratory"
+		type				"pipe"
+		order				"5"
 		limit			    "999"
-		limit_name			"armory"
+		limit_name			"laboratory"
 		require 			"headquarters"
-		upgrade				"buildings/main/armory_lvl_2"
-		menu_action 		"crafting"
+		menu_action			"research"
+		upgrade				"buildings/main/laboratory_lvl_2"
 		exclude_terrain_types "magma_hot_ground,magma_very_hot_ground"
+		overrides			"pipe_ground,pipe_connector_t,pipe_connector_x,pipe_corner,pipeline,pipe_straight_windowless"
 		hide_treasures 		"1"
 
 		costs
@@ -25,11 +26,11 @@ EntityBlueprint
 			BuildingCostInfo
 			{
 				name "default"
-				building_time 60
+				building_time 90
 				building_cost
 				{
-					carbonium 	"50"
-					steel 		"200"
+					carbonium 	"2000"
+					steel 		"1500"
 				}
 			}
 		}
@@ -42,18 +43,14 @@ EntityBlueprint
 			GameplayResource
 			{
 				resource 			"energy"
-				value	"80"
-			}
-			GameplayResource
-			{
-				resource 			"carbonium"
-				value	"2"
+				value			 	"250"
 			}
 
 			GameplayResource
 			{
-				resource 			"steel"
-				value	"2"
+				resource 			"water"
+				value			 	"100"
+				attachment			"att_in_1"
 			}
 		}
 
@@ -61,28 +58,20 @@ EntityBlueprint
 		{
 			GameplayResource
 			{
-				resource 			"consumables_manufacturing"
-				value				"3"
-				family				"manufacturing"
-			}
-
-			GameplayResource
-			{
-				resource 			"player_ammo_manufacturing"
-				value				"2.0"
-				family				"manufacturing"
+				resource 			"analysis"
+				value			 	"1"
 			}
 		}
-		priority 5
+		priority 2
 	}
 
 	LuaDesc
 	{
-		script "lua/buildings/main/armory.lua"
+		script "lua/buildings/main/laboratory.lua"
 
 		database
 		{
-			cone_effect			string:"build_cone_5x5"
+			cone_effect			string:"build_cone_6x4"
 			cone_effect_sell	string:"sell_big"
 		}
 
@@ -104,7 +93,7 @@ EntityBlueprint
 		health 						"2000"
 		regeneration 				"0"
 		regeneration_cooldown 		"0"
-		is_manual 1
+		 is_manual 1
 		update_health_uniform 		"1"
 
 
@@ -125,7 +114,6 @@ EntityBlueprint
 				destroy_state_change_effect_group "80_transition"
 				destroy_comp_delay "0.6"
 				destroy_comp_event "80_destroy"
-				//destroyed_state_material "buildings/main/headquarters_dest_75"
 				destroyed_state_effect_group "80_state"
 				destrucion_level_name "80"
 			}
@@ -144,7 +132,6 @@ EntityBlueprint
 				destroy_state_change_effect_group "60_transition"
 				destroy_comp_delay "0.6"
 				destroy_comp_event "60_destroy"
-				//destroyed_state_material "buildings/main/headquarters_dest_50"
 				destroyed_state_effect_group "60_state"
 				destrucion_level_name "60"
 			}
@@ -163,7 +150,6 @@ EntityBlueprint
 				destroy_state_change_effect_group "40_transition"
 				destroy_comp_delay "0.6"
 				destroy_comp_event "40_destroy"
-				//destroyed_state_material "buildings/main/headquarters_dest_25"
 				destroyed_state_effect_group "40_state"
 				destrucion_level_name "40"
 			}
@@ -182,7 +168,6 @@ EntityBlueprint
 				destroy_state_change_effect_group "20_transition"
 				destroy_comp_delay "0.6"
 				destroy_comp_event "20_destroy"
-				//destroyed_state_material "buildings/main/headquarters_dest_0"
 				destroyed_state_effect_group "20_state"
 				destrucion_level_name "20"
 			}
@@ -201,8 +186,6 @@ EntityBlueprint
 				destroy_state_change_effect_group "0_transition"
 				destroy_comp_delay "0.7"
 				destroy_comp_event "default"
-				//destroyed_state_material "buildings/main/headquarters_dest_0"
-				//destroyed_state_effect_group "0_state"
 				destrucion_level_name "0"
 			}
 		}
@@ -210,8 +193,8 @@ EntityBlueprint
 
 	MeshDesc
 	{
-		mesh "meshes/buildings/main/weapons_factory.mesh"
-		material "buildings/main/weapons_factory"
+		mesh "meshes/buildings/main/laboratory.mesh"
+		material "buildings/main/laboratory"
 	}
 
 	TypeDesc
@@ -221,7 +204,7 @@ EntityBlueprint
 
 	SkeletonDesc
 	{
-		name "meshes/buildings/main/weapons_factory"
+		name "meshes/buildings/main/laboratory"
 	}
 
 	AnimationGraphDesc
@@ -230,7 +213,7 @@ EntityBlueprint
 	}
 
 	PhysicsDesc
-	{
+ 	{
 		objects
 		{
 			PhysicsObjectDesc
@@ -240,19 +223,13 @@ EntityBlueprint
 				physics_material 	"default"
 				Shapes
 				{
-					PhysicsSphereShape
+					PhysicsMeshShape
 					{
-						r "4.45"
-
-						position
-						{
-							x "0.0"
-							y "1.0"
-							z "0.0"
-						}
+						mesh "meshes/buildings/main/laboratory_c1.nxs"
 					}
 				}
 			}
+
 		}
 	}
 
@@ -267,19 +244,19 @@ EntityBlueprint
 	{
 		Shapes
 		{
-			PhysicsBoxShape
-			{
-				x	10
-				y	10
-				z	10
-			}
+   			PhysicsBoxShape
+   			{
+    				x	12
+    				y	8
+    				z	10
+   			}
 		}
 	}
 
 	MinimapItemDesc
 	{
 		type				"image"
-		icon_material 		"gui/hud/minimap_icons/armory"
+		icon_material 		"gui/hud/minimap_icons/laboratory"
 		additional_z_order 	1
 		visibility			"always"
 		layer_group			"important_buildings"
@@ -425,11 +402,28 @@ EntityBlueprint
 
 	EffectDesc
 	{
+
 		EffectBaseBlueprints
 		{
 			"buildings/effects_big_base"
 		}
+////////////////////////Resources/////////////////////////
+		EffectGroup
+		{
+			group "att_in_1"
+			enabled "0"
+			delay "0"
 
+			Effects
+			{
+				Effect
+				{
+					blueprint "effects/buildings_and_machines/building_arrow"
+					bone "att_in_arrow"
+				}
+			}
+		}
+////////////////////////MISC/////////////////////////
 		EffectGroup
 		{
 			group "working"
@@ -439,13 +433,8 @@ EntityBlueprint
 			{
 				Effect
 				{
-					blueprint "effects/buildings_and_machines/steel_factory_furnace"
-					bone "att_chimney"
-				}
-				Effect
-				{
-					blueprint "effects/buildings_main/armory_working"
-					delay "0.5"
+					blueprint "effects/buildings_main/research_lab_energy"
+					bone "be_sphere"
 				}
 			}
 		}

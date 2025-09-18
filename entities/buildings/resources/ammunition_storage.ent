@@ -13,7 +13,7 @@ EntityBlueprint
 		require 			"headquarters"
 		upgrade				"buildings/resources/ammunition_storage_lvl_2"
 		order				"6"
-		limit			    "2"
+		limit			    "999"
 		limit_name			"ammo_storage"
 		exclude_terrain_types "magma_hot_ground,magma_very_hot_ground"
 

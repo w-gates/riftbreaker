@@ -14,7 +14,7 @@ EntityBlueprint
 		description			"gui/hud/building_description/ammunition_storage"
 		menu_icon			"gui/hud/building_icons/ammunition_storage_lvl2"
 		require 			"headquarters"
-		limit			    "2"
+		limit			    "999"
 		limit_name			"ammo_storage"
 		upgrade				"buildings/resources/ammunition_storage_lvl_3"
 		exclude_terrain_types "magma_hot_ground,magma_very_hot_ground"

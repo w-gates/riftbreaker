@@ -1,22 +1,21 @@
 EntityBlueprint
 {
-	name  "buildings/main/armory"
+	name  "buildings/main/communications_hub"
 
 	BuildingDesc
 	{
-		name 				"armory"
-		bp   				"buildings/main/armory"
+		name 				"communications_hub"
+		bp   				"buildings/main/communications_hub"
 		category 			"main"
-		//type				"pipe"
-		localization_id		"gui/hud/building_name/armory"
-		description			"gui/hud/building_description/armory"
-		menu_icon			"gui/hud/building_icons/weapons_factory"
-		order				"2"
+		localization_id		"gui/hud/building_name/communications_hub"
+		description			"gui/hud/building_description/communications_hub"
+		menu_icon			"gui/hud/building_icons/communications_hub"
+		order				"3"
 		limit			    "999"
-		limit_name			"armory"
-		require 			"headquarters"
-		upgrade				"buildings/main/armory_lvl_2"
-		menu_action 		"crafting"
+		limit_name			"communications_hub"
+		require 			"headquarters_lvl_2"
+		upgrade				"buildings/main/communications_hub_lvl_2"
+		menu_action 		"research"
 		exclude_terrain_types "magma_hot_ground,magma_very_hot_ground"
 		hide_treasures 		"1"
 
@@ -25,11 +24,11 @@ EntityBlueprint
 			BuildingCostInfo
 			{
 				name "default"
-				building_time 60
+				building_time 120
 				building_cost
 				{
-					carbonium 	"50"
-					steel 		"200"
+					carbonium 	"400"
+					steel 		"600"
 				}
 			}
 		}
@@ -42,18 +41,7 @@ EntityBlueprint
 			GameplayResource
 			{
 				resource 			"energy"
-				value	"80"
-			}
-			GameplayResource
-			{
-				resource 			"carbonium"
-				value	"2"
-			}
-
-			GameplayResource
-			{
-				resource 			"steel"
-				value	"2"
+				value			 	"50"
 			}
 		}
 
@@ -61,31 +49,22 @@ EntityBlueprint
 		{
 			GameplayResource
 			{
-				resource 			"consumables_manufacturing"
-				value				"3"
-				family				"manufacturing"
-			}
-
-			GameplayResource
-			{
-				resource 			"player_ammo_manufacturing"
-				value				"2.0"
-				family				"manufacturing"
+				resource 			"download"
+				value			 	"1"
 			}
 		}
-		priority 5
+		priority 2
 	}
 
 	LuaDesc
 	{
-		script "lua/buildings/main/armory.lua"
+		script "lua/buildings/main/communications_hub.lua"
 
 		database
 		{
 			cone_effect			string:"build_cone_5x5"
 			cone_effect_sell	string:"sell_big"
 		}
-
 	}
 
 	InteractiveComponent
@@ -104,7 +83,7 @@ EntityBlueprint
 		health 						"2000"
 		regeneration 				"0"
 		regeneration_cooldown 		"0"
-		is_manual 1
+		 is_manual 1
 		update_health_uniform 		"1"
 
 
@@ -210,8 +189,8 @@ EntityBlueprint
 
 	MeshDesc
 	{
-		mesh "meshes/buildings/main/weapons_factory.mesh"
-		material "buildings/main/weapons_factory"
+		mesh "meshes/buildings/main/communications_hub.mesh"
+		material "buildings/main/communications_hub"
 	}
 
 	TypeDesc
@@ -221,7 +200,7 @@ EntityBlueprint
 
 	SkeletonDesc
 	{
-		name "meshes/buildings/main/weapons_factory"
+		name "meshes/buildings/main/communications_hub"
 	}
 
 	AnimationGraphDesc
@@ -230,7 +209,7 @@ EntityBlueprint
 	}
 
 	PhysicsDesc
-	{
+ 	{
 		objects
 		{
 			PhysicsObjectDesc
@@ -240,15 +219,24 @@ EntityBlueprint
 				physics_material 	"default"
 				Shapes
 				{
-					PhysicsSphereShape
+					PhysicsCapsuleShape
 					{
 						r "4.45"
+						half_height "2"
 
 						position
 						{
 							x "0.0"
-							y "1.0"
+							y "1.5"
 							z "0.0"
+						}
+
+						orientation
+						{
+							w "0.7"
+							x "0.0"
+							z "0.7"
+							y "0.0"
 						}
 					}
 				}
@@ -267,19 +255,19 @@ EntityBlueprint
 	{
 		Shapes
 		{
-			PhysicsBoxShape
-			{
-				x	10
-				y	10
-				z	10
-			}
+   			PhysicsBoxShape
+   			{
+    				x	10
+    				y	10
+    				z	10
+   			}
 		}
 	}
 
 	MinimapItemDesc
 	{
 		type				"image"
-		icon_material 		"gui/hud/minimap_icons/armory"
+		icon_material 		"gui/hud/minimap_icons/comms_hub"
 		additional_z_order 	1
 		visibility			"always"
 		layer_group			"important_buildings"
@@ -429,7 +417,7 @@ EntityBlueprint
 		{
 			"buildings/effects_big_base"
 		}
-
+////////////////////////MISC/////////////////////////
 		EffectGroup
 		{
 			group "working"
@@ -439,12 +427,12 @@ EntityBlueprint
 			{
 				Effect
 				{
-					blueprint "effects/buildings_and_machines/steel_factory_furnace"
-					bone "att_chimney"
+					blueprint "effects/buildings_and_machines/comms_hub_energy"
+					bone "att_antenna"
 				}
 				Effect
 				{
-					blueprint "effects/buildings_main/armory_working"
+					blueprint "effects/buildings_main/communications_hub_working"
 					delay "0.5"
 				}
 			}
